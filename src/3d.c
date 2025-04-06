@@ -147,6 +147,12 @@ int main(int argc, char **argv)
 
     const char *file_path = nob_shift_args(&argc, &argv);
     Image image = LoadImage(file_path);
+
+    if (!IsImageReady(image)) {
+        nob_log(NOB_ERROR, "Failed to load image '%s'.", file_path);
+        return 1;
+    }
+
     ImageFormat(&image, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
 
     Color_Point *unique_points = NULL;
