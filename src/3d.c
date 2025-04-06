@@ -195,6 +195,11 @@ int main(int argc, char **argv)
             recluster_state();
         }
 
+        if (IsKeyDown(KEY_K)) {
+            update_means(cluster_radius);
+            recluster_state();
+        }
+
         if (IsKeyPressed(KEY_S)) {
             for (size_t i = 0; i < points_count; ++i) {
                 int k = cluster_of_color(points[i], cluster_radius);
